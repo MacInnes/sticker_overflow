@@ -1,0 +1,4 @@
+Welcome, <%= current_user.username %>
+
+<%= link_to "Logout", logout_path, method: :get %>
+<!-- this doesn't work, but the link above does... <%= button_to "Logout", logout_path, method: :get %> -->
