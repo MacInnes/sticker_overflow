@@ -5,7 +5,7 @@ describe 'Visitor' do
 
     it 'sees all stickers' do
       user = User.create(username: "mac", password: "123", email: "asdf")
-      sticker_1 = user.stickers.create(title: "asdf", description: "asdfjh", image_url: "asdf", rating: 4)
+      sticker_1 = user.stickers.create(title: "asdf", description: "asdfjh", image_url: "asdf", quantity: 4)
 
       visit root_path
       expect(page).to have_content(sticker_1.title)
@@ -13,7 +13,7 @@ describe 'Visitor' do
 
     it 'can click on a sticker to view that individual sticker' do
       user = User.create(username: "mac", password: "123", email: "asdf")
-      sticker_1 = user.stickers.create(title: "asdf", description: "asdfjh", image_url: "asdf", rating: 4)
+      sticker_1 = user.stickers.create(title: "asdf", description: "asdfjh", image_url: "asdf", quantity: 4)
 
       visit root_path
       click_on(sticker_1.title)
