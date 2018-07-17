@@ -39,6 +39,7 @@ group :development, :test do
   gem 'launchy'
   gem 'database_cleaner'
   gem 'shoulda-matchers'
+  gem 'simplecov'
   gem 'pry'
   gem 'active_designer'
 end

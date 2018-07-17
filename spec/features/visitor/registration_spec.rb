@@ -13,6 +13,6 @@ describe 'Registration' do
     fill_in :user_email, with: "test@gmail.com"
     click_on('Create User')
 
-    expect(current_path).to eq(root_path)
+    expect(current_path).to eq(user_path(User.last))
   end
 end
