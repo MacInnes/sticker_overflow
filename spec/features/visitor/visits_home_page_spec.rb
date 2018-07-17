@@ -19,6 +19,7 @@ describe 'Visitor' do
       click_on(sticker_1.title)
       expect(current_path).to eq(sticker_path(sticker_1))
       expect(page).to have_content(sticker_1.title)
+      expect(page).to have_content(sticker_1.quantity)
     end
 
   end

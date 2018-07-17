@@ -12,5 +12,5 @@ Rails.application.routes.draw do
     resources :users
   end
 
-  resources :stickers, only: [:index, :show]
+  resources :stickers
 end

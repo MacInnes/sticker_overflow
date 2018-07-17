@@ -8,11 +8,16 @@ describe 'Registration' do
 
     expect(current_path).to eq(new_user_path)
 
-    fill_in :user_username, with: "sadfkjh"
-    fill_in :user_password, with: "jhkfsakh"
-    fill_in :user_email, with: "test@gmail.com"
+    user = User.new(username: "asdf", password: "sadfkjh", email: "asdf@gmail.com")
+
+    fill_in :user_username, with: user.username
+    fill_in :user_password, with: user.password
+    fill_in :user_email, with: user.email
     click_on('Create User')
 
-    expect(current_path).to eq(user_path(User.last))
+    allow_any_instance_of(ApplicationController).to receive(:current_user).and_return(user)
+
+    expect(current_path).to eq(root_path)
+    expect(page).to have_content("Welcome, #{user.username}")
   end
 end
