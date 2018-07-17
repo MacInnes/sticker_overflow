@@ -1,4 +1,12 @@
 Welcome, <%= current_user.username %>
 
-<%= link_to "Logout", logout_path, method: :get %>
-<!-- this doesn't work, but the link above does... <%= button_to "Logout", logout_path, method: :get %> -->
+<%= button_to "Logout", logout_path, method: :get %>
+
+<% @user.stickers.each do |sticker| %>
+  <section class="sticker-<%=sticker.id%>">
+    <p>Title: <%= sticker.title %></p>
+    <p>Description: <%= sticker.description %></p>
+    <p>Quantity: <%= sticker.quantity %></p>
+    <%= button_to "Edit", edit_sticker_path(sticker), method: :get %>
+  </section>
+<% end %>

@@ -16,6 +16,16 @@ class StickersController < ApplicationController
     redirect_to root_path
   end
 
+  def edit
+    @sticker = Sticker.find(params[:id])
+  end
+
+  def update
+    sticker = Sticker.find(params[:id])
+    sticker.update(sticker_params)
+    redirect_to user_path(sticker.user)
+  end
+
 
   private
     def require_user

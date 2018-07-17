@@ -15,7 +15,7 @@ describe 'Login' do
     click_on("Login")
 
     expect(current_path).to eq(user_path(user))
-    expect(page).to have_content("Logout")
+    expect(page).to have_content("Welcome, #{user.username}")
     expect(page).to_not have_content("Login")
   end
 end
