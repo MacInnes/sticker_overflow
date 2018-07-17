@@ -1,0 +1,9 @@
+Admin Users:
+
+<% @users.each do |user| %>
+  <section class="user-<%=user.id%>">
+    <p>Username: <%= user.username %></p>
+    <p>Email: <%= user.email %></p>
+    <%= button_to "Delete", admin_user_path(user.id), method: :delete %>
+  </section>
+<% end %>

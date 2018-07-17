@@ -7,4 +7,10 @@ Rails.application.routes.draw do
   get '/logout', to: 'sessions#destroy'
 
   resources :users, only: [:new, :create, :show]
+
+  namespace :admin do
+    resources :users
+  end
+
+  resources :stickers, only: [:index, :show]
 end

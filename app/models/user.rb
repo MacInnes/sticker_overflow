@@ -6,4 +6,6 @@ class User < ApplicationRecord
   has_many :messages
   has_many :stickers
   has_secure_password
+
+  enum role: ['default', 'admin']
 end
