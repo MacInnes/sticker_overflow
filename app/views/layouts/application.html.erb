@@ -9,6 +9,17 @@
   </head>
 
   <body>
+    <% if current_user %>
+      <nav>
+        <h4>Welcome, <%= link_to current_user.username, user_path(current_user) %>!</h4>
+        <%= button_to "Messages", user_messages_path(current_user), method: :get %>
+        <%= button_to "Logout", logout_path, method: :get %>
+      </nav>
+    <% else %>
+      <nav>
+
+      </nav>
+    <% end %>
     <%= yield %>
   </body>
 </html>

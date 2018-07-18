@@ -1,7 +1,3 @@
-Welcome, <%= current_user.username %>
-
-<%= button_to "Logout", logout_path, method: :get %>
-
 <% @user.stickers.each do |sticker| %>
   <section class="sticker-<%=sticker.id%>">
     <p>Title: <%= sticker.title %></p>

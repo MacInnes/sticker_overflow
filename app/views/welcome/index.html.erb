@@ -1,8 +1,6 @@
 <% if current_user %>
   <h4>Welcome, <%= current_user.username %></h4>
   <%= button_to "Add a new sticker", new_sticker_path, method: :get %>
-  <%= button_to "Messages", user_messages_path(current_user), method: :get %>
-  <%= button_to "Logout", logout_path, method: :get %>
 <% else %>
   <%= button_to "Create a new user", new_user_path, method: :get %>
   <%= button_to "Login", login_path, method: :get %>

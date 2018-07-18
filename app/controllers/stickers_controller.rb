@@ -11,9 +11,14 @@ class StickersController < ApplicationController
 
   def create
     user = current_user
-    user.stickers.create(sticker_params)
-    # TODO: add if else for save with flash messages
-    redirect_to root_path
+    @sticker = user.stickers.new(sticker_params)
+    if @sticker.save
+      # TODO: add if else for save with flash messages
+      redirect_to root_path
+    else
+      render :new
+    end
+
   end
 
   def edit
