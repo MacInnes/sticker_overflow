@@ -48,6 +48,15 @@ describe 'Nav' do
       expect(current_path).to eq(root_path)
       expect(page).to_not have_content("Welcome, #{user.username}!")
     end
+    it "does not see links it isn't authorized to" do
+      user = User.create(username: "Mac", password: "123", email: "asdf@gmial.com")
+
+      allow_any_instance_of(ApplicationController).to receive(:current_user).and_return(user)
+
+      visit root_path
+
+      expect(page).to_not have_content("Users")
+    end
   end
 
   context 'Visitor' do
@@ -59,6 +68,12 @@ describe 'Nav' do
       click_on("StickerOverflow")
 
       expect(current_path).to eq(root_path)
+    end
+    it "does not see links it isn't authorized to" do
+      visit root_path
+
+      expect(page).to_not have_content("Add a sticker")
+      expect(page).to_not have_content("Messages")
     end
   end
   context 'Admin' do
