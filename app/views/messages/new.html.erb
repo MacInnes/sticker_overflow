@@ -1,0 +1,9 @@
+<%= form_for [@user, @message] do |f| %>
+  <%= f.label :header %>
+  <%= f.text_field :header %>
+  <%= f.label :body %>
+  <%= f.text_field :body %>
+  <%= f.hidden_field :user_from_id %>
+  <%= f.hidden_field :user_to_id %>
+  <%= f.submit "Send Message" %>
+<% end %>

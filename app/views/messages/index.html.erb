@@ -1,6 +1,7 @@
 <h1>Hello Messages</h1>
 
 <% @messages.each do |message| %>
-  <%= message.header %>
-  <%= message.body %>
+  <p>From: <%= message.user_from.username %></p>
+  <p>Header: <%= message.header %></p>
+  <p>Body: <%= message.body %></p>
 <% end %>
