@@ -13,4 +13,9 @@ Rails.application.routes.draw do
   end
 
   resources :stickers
+
+  resources :users, only: :show do
+    resources :messages, only: [:new, :index, :show, :create]
+  end
+
 end

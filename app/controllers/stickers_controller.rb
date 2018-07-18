@@ -1,5 +1,5 @@
 class StickersController < ApplicationController
-  before_action :require_user, only: [:new, :create, :edit, :delete, :index]
+  before_action :require_user, only: [:new, :create, :edit, :destroy, :index]
 
   def show
     @sticker = Sticker.find(params[:id])
@@ -23,6 +23,12 @@ class StickersController < ApplicationController
   def update
     sticker = Sticker.find(params[:id])
     sticker.update(sticker_params)
+    redirect_to user_path(sticker.user)
+  end
+
+  def destroy
+    sticker = Sticker.find(params[:id])
+    sticker.destroy
     redirect_to user_path(sticker.user)
   end
 

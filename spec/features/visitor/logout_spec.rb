@@ -18,6 +18,5 @@ describe 'Logout' do
     click_on("Logout")
 
     expect(current_path).to eq(root_path)
-    # expect(current_user).to be_nil
   end
 end
