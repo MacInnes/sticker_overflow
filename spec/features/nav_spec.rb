@@ -49,4 +49,29 @@ describe 'Nav' do
       expect(page).to_not have_content("Welcome, #{user.username}!")
     end
   end
+
+  context 'Visitor' do
+    it 'can view the homepage from any other page' do
+      user = User.create(username: "kjhfskj", password: "sdfkjsfoi", email: "sadf@gmail.com")
+      sticker = user.stickers.create(title: "sdf", description: "asflkj", quantity: 29, image_url: "www.google.com")
+
+      visit sticker_path(sticker)
+      click_on("StickerOverflow")
+
+      expect(current_path).to eq(root_path)
+    end
+  end
+  context 'Admin' do
+    it 'can view all users' do
+      admin = User.create(username: "kjhfskj", password: "sdfkjsfoi", email: "sadf@gmail.com", role: 1)
+      user = User.create(username: "asdf", password: "sdfkjsfoi", email: "sadf@gmail.com")
+
+      allow_any_instance_of(ApplicationController).to receive(:current_user).and_return(admin)
+
+      visit root_path
+      click_on("Users")
+
+      expect(current_path).to eq(admin_users_path)
+    end
+  end
 end

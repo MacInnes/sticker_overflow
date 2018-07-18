@@ -9,17 +9,19 @@
   </head>
 
   <body>
-    <% if current_user %>
-      <nav>
+    <nav>
+      <%= link_to "StickerOverflow", root_path %>
+      <% if current_user %>
         <h4>Welcome, <%= link_to current_user.username, user_path(current_user) %>!</h4>
         <%= button_to "Messages", user_messages_path(current_user), method: :get %>
         <%= button_to "Logout", logout_path, method: :get %>
-      </nav>
-    <% else %>
-      <nav>
+        <% if current_admin? %>
+          <%= button_to "Users", admin_users_path, method: :get %>
+        <% end %>
+      <% else %>
 
-      </nav>
-    <% end %>
+      <% end %>
+    </nav>
     <%= yield %>
   </body>
 </html>
