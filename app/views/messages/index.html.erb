@@ -1,7 +1,14 @@
-<h1>Hello Messages</h1>
+<h1>Your messages:</h1>
 
-<% @messages.each do |message| %>
-  <p>From: <%= message.user_from.username %></p>
-  <p>Header: <%= message.header %></p>
-  <p>Body: <%= message.body %></p>
-<% end %>
+<section class="container-fluid justify-content-center">
+  <section class="column">
+    <% @messages.each do |message| %>
+      <section class="card message-<%=message.id%>">
+        <%= link_to "View", user_message_path(current_user.id, message.id), class: "card-body" %>
+        <p class="card-title">From: <%= message.user_from.username %></p>
+        <p class="card-text">Header: <%= message.header %></p>
+      </section>
+    <% end %>
+  </section>
+
+</section>
