@@ -37,7 +37,7 @@ describe 'User' do
 
       expect(current_path).to eq(new_user_message_path(user_1))
 
-      message = Message.new(header: "asdf", body: "asdf", user_to_id: user_2.id)
+      message = Message.new(header: "asdf", body: "asdf")
       fill_in :message_header, with: message.header
       fill_in :message_body, with: message.body
       click_button("Send Message")

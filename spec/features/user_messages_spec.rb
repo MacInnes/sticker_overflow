@@ -11,7 +11,7 @@ describe 'User' do
 
     visit root_path
 
-    click_button("Messages")
+    click_on("Messages")
 
     expect(current_path).to eq(user_messages_path(user_1))
     expect(page).to have_content(message_1.header)

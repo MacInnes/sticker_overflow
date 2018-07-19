@@ -40,7 +40,9 @@ describe 'Nav' do
 
       fill_in :username, with: user.username
       fill_in :password, with: user.password
-      click_on("Login")
+      within(".login-form") do
+        click_on("Login")
+      end
 
       visit root_path
       click_on("Logout")

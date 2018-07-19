@@ -12,7 +12,9 @@ describe 'Logout' do
 
     fill_in :username, with: user.username
     fill_in :password, with: user.password
-    click_on("Login")
+    within(".login-form") do
+      click_on("Login")
+    end
 
     expect(current_path).to eq(user_path(user))
     click_on("Logout")
