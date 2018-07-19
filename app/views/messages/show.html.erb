@@ -1,3 +1,4 @@
-<%= @message.user_from %>
-<%= @message.header %>
-<%= @message.body %>
+<h4>From: <%= @message.user_from.username %></h4>
+<h4>Header: <%= @message.header %></h4>
+<p>Body: <%= @message.body %><p>
+<%= link_to "Reply", new_user_message_path, user_to_id: @message.user_from.id, user_from_id: current_user.id %>

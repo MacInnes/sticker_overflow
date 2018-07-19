@@ -1,6 +1,7 @@
-<%= @sticker.title %>
-<%= @sticker.description %>
-<%= @sticker.quantity %>
+<img src="<%= @sticker.image_url%>" alt="">
+<h4>Title:<%= @sticker.title %></h4>
+<p><%= @sticker.description %></p>
+<p>Quantity:<%= @sticker.quantity %></p>
 
 <% if current_user && @sticker.user.id != current_user.id %>
   <%= link_to "Message this User", new_user_message_path(current_user.id, :user_to_id => @sticker.user.id), method: :get %>
