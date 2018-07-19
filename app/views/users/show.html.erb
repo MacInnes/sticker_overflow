@@ -1,9 +1,17 @@
-<% @user.stickers.each do |sticker| %>
-  <section class="sticker-<%=sticker.id%>">
-    <p>Title: <%= sticker.title %></p>
-    <p>Description: <%= sticker.description %></p>
-    <p>Quantity: <%= sticker.quantity %></p>
-    <%= button_to "Edit", edit_sticker_path(sticker), method: :get %>
-    <%= button_to "Delete", sticker_path(sticker), method: :delete %>
+
+
+<section class="container-fluid">
+  <section class="row">
+      <% @user.stickers.each do |sticker| %>
+        <section class="card sticker-<%=sticker.id%>">
+          <img src="<%=sticker.image_url%>" class="card-img-top">
+          <div class="card-body">
+            <%= link_to sticker.title, sticker_path(sticker), class: "card-title" %>
+            <p class="card-text">Quantity: <%= sticker.quantity %></p>
+            <%= button_to "Edit", edit_sticker_path(sticker), method: :get %>
+            <%= button_to "Delete", sticker_path(sticker), method: :delete %>
+          </div>
+        </section>
+      <% end %>
   </section>
-<% end %>
+</section>

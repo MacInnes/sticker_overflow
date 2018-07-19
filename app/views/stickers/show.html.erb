@@ -3,5 +3,5 @@
 <%= @sticker.quantity %>
 
 <% if current_user && @sticker.user.id != current_user.id %>
-  <%= button_to "Message this User", new_user_message_path(current_user.id, :user_to_id => @sticker.user.id), method: :get %>
+  <%= link_to "Message this User", new_user_message_path(current_user.id, :user_to_id => @sticker.user.id), method: :get %>
 <% end %>

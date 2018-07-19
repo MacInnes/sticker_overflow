@@ -2,6 +2,16 @@
   <%= button_to "Add a new sticker", new_sticker_path, method: :get %>
 <% end %>
 
-<% @stickers.each do |sticker| %>
-  <%= link_to sticker.title, sticker_path(sticker) %>
-<% end %>
+<section class="container-fluid">
+  <section class="row">
+      <% @stickers.each do |sticker| %>
+        <section class="card">
+          <img src="<%=sticker.image_url%>" class="card-img-top">
+          <div class="card-body">
+            <%= link_to sticker.title, sticker_path(sticker), class: "card-title" %>
+            <p class="card-text">Quantity: <%= sticker.quantity %></p>
+          </div>
+        </section>
+      <% end %>
+  </section>
+</section>

@@ -33,14 +33,14 @@ describe 'User' do
 
       visit sticker_path(sticker)
 
-      click_button("Message this User")
+      click_on("Message this User")
 
       expect(current_path).to eq(new_user_message_path(user_1))
 
       message = Message.new(header: "asdf", body: "asdf")
       fill_in :message_header, with: message.header
       fill_in :message_body, with: message.body
-      click_button("Send Message")
+      click_on("Send Message")
 
       expect(current_path).to eq(user_messages_path(user_1))
       expect(page).to have_content(message.header)

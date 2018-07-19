@@ -13,9 +13,9 @@ describe 'User' do
     allow_any_instance_of(ApplicationController).to receive(:current_user).and_return(user)
 
     visit user_path(user)
-    expect(page).to have_content("Title: #{user_sticker_1.title}")
-    expect(page).to have_content("Title: #{user_sticker_2.title}")
-    expect(page).to_not have_content("Title: #{other_user_sticker_1.title}")
+    expect(page).to have_content("#{user_sticker_1.title}")
+    expect(page).to have_content("#{user_sticker_2.title}")
+    expect(page).to_not have_content("#{other_user_sticker_1.title}")
   end
 
   it 'can edit the details of a sticker' do
@@ -42,8 +42,7 @@ describe 'User' do
     click_on("Update Sticker")
 
     expect(current_path).to eq(user_path(user))
-    expect(page).to have_content("Title: #{new_title}")
-    expect(page).to have_content("Description: #{new_description}")
+    expect(page).to have_content("#{new_title}")
     expect(page).to have_content("Quantity: #{new_quantity}")
   end
 
@@ -54,7 +53,7 @@ describe 'User' do
     user_sticker_2 = user.stickers.create(title: "asdf", description: "sdfkhsd", quantity: 20, image_url: "http://placekitten.com/200/200")
 
     allow_any_instance_of(ApplicationController).to receive(:current_user).and_return(user)
-    
+
     visit user_path(user)
 
     within(".sticker-#{user_sticker_1.id}") do
@@ -63,7 +62,7 @@ describe 'User' do
 
 
     expect(current_path).to eq(user_path(user))
-    expect(page).to_not have_content("Title: #{user_sticker_1.title}")
-    expect(page).to have_content("Title: #{user_sticker_2.title}")
+    expect(page).to_not have_content("#{user_sticker_1.title}")
+    expect(page).to have_content("#{user_sticker_2.title}")
   end
 end
